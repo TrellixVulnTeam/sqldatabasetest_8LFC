@@ -23,7 +23,7 @@ with conn as connection:
 	# for row in c.execute("SELECT firstname, lastname from employees"):
 	# 	print(row)
 	
-	# fetchall() retrieves all records from query
+	# fetchall() retrieves all records from query <= doesnt work? :<
 	rows = c.execute("SELECT city, state from population")
 
 	# outputs the rows to the screen, row by row
@@ -31,13 +31,22 @@ with conn as connection:
 		print(r[0], r[1])
 
 	# Error handling
-	try:
-		cities = [('WOahah', 'WH', 231321), ('JAbaHUT', 'JH', 1233333), ('OMKoook', 'OK', 48923432)]
-		c.executemany('INSERT INTO populations VALUES(?, ?, ?)', cities)
-	except:
-		print("Something went wrong, oops!")
+	# try:
+	# 	cities = [('WOahah', 'WH', 231321), ('JAbaHUT', 'JH', 1233333), ('OMKoook', 'OK', 48923432)]
+	# 	c.executemany('INSERT INTO populations VALUES(?, ?, ?)', cities)
+	# except:
+	# 	print("Something went wrong, oops!")
 
+	# Updating
+	# c.execute("UPDATE population SET population = 99999999999 WHERE city = 'New York City'")
 
+	# Deleting
+	#c.execute("DELETE FROM population WHERE city = 'WOahah'")
+
+	# Show all values
+	values = c.execute("SELECT * from population")
+	for i in values:
+		print(i)
 # commit changes
 conn.commit()
 
